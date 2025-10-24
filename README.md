@@ -2,7 +2,7 @@
 
 This module implements a prototype Retrieval-Augmented Generation (RAG) system customized for legal analysis under the **Fair Use Doctrine** in U.S. copyright law. It supports granular legal reasoning by integrating semantic search with citation networks, court hierarchy, and structured factor-based analysis.
 
-Developed for the paper [_(Submitted, under review) Incorporating Legal Structure in Retrieval-Augmented Generation: A Case Study on Copyright Fair Use_](https://arxiv.org/abs/2505.02164), this tool aims to improve the retrieval and evaluation of case law for use in real-world copyright disputes.
+Developed for the paper [_Incorporating Legal Structure in Retrieval-Augmented Generation: A Case Study on Copyright Fair Use_](https://arxiv.org/abs/2505.02164), this tool aims to improve the retrieval and evaluation of case law for use in real-world copyright disputes.
 
 ---
 
@@ -32,7 +32,7 @@ Developed for the paper [_(Submitted, under review) Incorporating Legal Structur
 ### 1. **Install Dependencies**
 
 ```bash
-pip install streamlit polars neo4j PyMuPDF langchain-google-genai
+pip install streamlit polars neo4j PyMuPDF langchain-google-genai google-genai
 ```
 
 ### 2. **Set Required Environment Variables**
@@ -70,5 +70,5 @@ streamlit run RAG_Streamlit.py
 ## Related Links
 
 * [Paper (PDF)](https://arxiv.org/abs/2505.02164)
-* [Live App Demo](https://fairuselegalbot-main.streamlit.app)
+* [Live App Demo](https://fairuselegalrag.streamlit.app/)
 * [GitHub Project](https://github.com/justinhjy1004/FairUseLegalBot)

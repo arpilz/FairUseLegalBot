@@ -1,11 +1,12 @@
-import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 import os
 import polars as pl
 from util import evaluation_template
+from dotenv import load_dotenv
 import time
 
+load_dotenv()
 os.environ["GOOGLE_API_KEY"] = os.environ["GEMINI_API"]
 
 # Initialize the LLM (ensure your API key is set in your environment)
@@ -55,7 +56,6 @@ combine_evaluations_use = ChatPromptTemplate.from_messages(
 
 combine_evaluations_use_chain = combine_evaluations_use | llm
 
-@st.cache_data
 def evaluate_case(summary, dispute):
     evaluation = fair_use_relation_chain.invoke({
         "summary": summary,
@@ -64,7 +64,6 @@ def evaluate_case(summary, dispute):
 
     return evaluation.content
 
-@st.cache_data
 def rewrite_four_factor_test(dispute):
     rewrite = rewrite_in_context_of_fair_use_chain.invoke({
         "dispute": dispute
@@ -72,7 +71,6 @@ def rewrite_four_factor_test(dispute):
 
     return rewrite.content
 
-@st.cache_data
 def analyze_all_cases(cases, dispute):
 
     evaluations = []
