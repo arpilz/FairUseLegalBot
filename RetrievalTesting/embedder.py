@@ -1,8 +1,9 @@
 import os 
+from dotenv import load_dotenv
 from neo4j import GraphDatabase
 from typing import List
 import polars as pl
-from google import genai
+import google.genai as genai
 from query import query_search_by_similarity, query_get_citation
 
 ##===================================
@@ -10,6 +11,7 @@ from query import query_search_by_similarity, query_get_citation
 ##===================================
 
 ## Database Connections
+load_dotenv()
 URI = os.environ["AURA_URI"]
 AUTH = (os.environ["AURA_user"], os.environ["AURA_password"])
 

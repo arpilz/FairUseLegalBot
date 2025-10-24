@@ -2,6 +2,10 @@ import streamlit as st
 from embedder import Retriever
 from util import on_similarity_change, on_citation_change, on_court_stats_change, pdf_to_text, close_all, validate_numeric_input
 from evaluator import evaluate_case, rewrite_four_factor_test, analyze_all_cases
+evaluate_case = st.cache_data(ttl=3600)(evaluate_case)
+rewrite_four_factor_test = st.cache_data(ttl=3600)(rewrite_four_factor_test)
+analyze_all_cases = st.cache_data(ttl=3600)(analyze_all_cases)
+
 import polars as pl
 
 ## Initialize Retriever
