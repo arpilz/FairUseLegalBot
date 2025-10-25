@@ -16,7 +16,12 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from embedder import Retriever
 from evaluator import analyze_all_cases
 
-retriever = Retriever()
+_retriever = None
+def get_retriever():
+    global _retriever
+    if _retriever is None:
+        _retriever = Retriever()
+    return _retriever
 
 # validating weights (set default + normalization)
 class Weights(BaseModel):
@@ -80,7 +85,7 @@ def search_similar_cases(
         w = req.weights
         s, cstats, cit = float(w.similarity), float(w.court_stats), float(w.citation)
 
-        df = retriever.search_similar_cases(
+        df = get_retriever().search_similar_cases(
             req.query,
             similarity_weight=s,
             court_weight=cstats,
@@ -139,7 +144,7 @@ def analyze(
         w = req.weights
         s, cstats, cit = float(w.similarity), float(w.court_stats), float(w.citation)
 
-        df = retriever.search_similar_cases(
+        df = get_retriever().search_similar_cases(
             req.query,
             similarity_weight=s,
             court_weight=cstats,

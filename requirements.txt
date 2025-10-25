@@ -6,3 +6,9 @@ langchain_google_genai
 langchain_core
 pymupdf
 python-dotenv
+fastapi
+uvicorn[standard]
+gunicorn
+slowapi
+pydantic
+streamlit

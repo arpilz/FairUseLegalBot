@@ -1,0 +1,8 @@
+steps:
+- name: gcr.io/cloud-builders/docker
+  args: ['build',
+         '-t', 'gcr.io/fairuselegalbot/fairuse-api',
+         '-f', 'RetrievalTesting/API/Dockerfile',
+         '.']
+images:
+- 'gcr.io/fairuselegalbot/fairuse-api'
